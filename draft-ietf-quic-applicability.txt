@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               B. Trammell
-Expires: 10 June 2021                                             Google
-                                                         7 December 2020
+Expires: 24 June 2021                                             Google
+                                                        21 December 2020
 
 
               Applicability of the QUIC Transport Protocol
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 June 2021.
+   This Internet-Draft will expire on 24 June 2021.
 
 Copyright Notice
 
@@ -761,20 +761,20 @@ Table of Contents
 
    [QUIC]     Iyengar, J. and M. Thomson, "QUIC: A UDP-Based Multiplexed
               and Secure Transport", Work in Progress, Internet-Draft,
-              draft-ietf-quic-transport-32, 20 October 2020,
+              draft-ietf-quic-transport-33, 13 December 2020,
               <http://www.ietf.org/internet-drafts/draft-ietf-quic-
-              transport-32.txt>.
+              transport-33.txt>.
 
    [QUIC-INVARIANTS]
               Thomson, M., "Version-Independent Properties of QUIC",
               Work in Progress, Internet-Draft, draft-ietf-quic-
-              invariants-11, 24 September 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-quic-invariants-11.txt>.
+              invariants-12, 13 December 2020, <http://www.ietf.org/
+              internet-drafts/draft-ietf-quic-invariants-12.txt>.
 
    [QUIC-TLS] Thomson, M. and S. Turner, "Using TLS to Secure QUIC",
-              Work in Progress, Internet-Draft, draft-ietf-quic-tls-32,
-              20 October 2020, <http://www.ietf.org/internet-drafts/
-              draft-ietf-quic-tls-32.txt>.
+              Work in Progress, Internet-Draft, draft-ietf-quic-tls-33,
+              13 December 2020, <http://www.ietf.org/internet-drafts/
+              draft-ietf-quic-tls-33.txt>.
 
    [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
               Cheshire, "Internet Assigned Numbers Authority (IANA)
@@ -826,8 +826,8 @@ Table of Contents
    [QUIC-HTTP]
               Bishop, M., "Hypertext Transfer Protocol Version 3
               (HTTP/3)", Work in Progress, Internet-Draft, draft-ietf-
-              quic-http-32, 20 October 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-quic-http-32.txt>.
+              quic-http-33, 15 December 2020, <http://www.ietf.org/
+              internet-drafts/draft-ietf-quic-http-33.txt>.
 
    [QUIC-LB]  Duke, M. and N. Banks, "QUIC-LB: Generating Routable QUIC
               Connection IDs", Work in Progress, Internet-Draft, draft-
