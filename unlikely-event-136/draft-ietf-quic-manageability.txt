@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               B. Trammell
-Expires: 22 May 2021                                              Google
-                                                        18 November 2020
+Expires: 24 June 2021                                             Google
+                                                        21 December 2020
 
 
               Manageability of the QUIC Transport Protocol
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 May 2021.
+   This Internet-Draft will expire on 24 June 2021.
 
 Copyright Notice
 
@@ -54,7 +54,6 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-     1.1.  Notational Conventions
    2.  Features of the QUIC Wire Image
      2.1.  QUIC Packet Header Structure
      2.2.  Coalesced Packets
@@ -84,6 +83,7 @@ Table of Contents
      4.4.  DDoS Detection and Mitigation
      4.5.  UDP Policing
      4.6.  Distinguishing acknowledgment traffic
+     4.7.  QoS support and ECMP
    5.  IANA Considerations
    6.  Security Considerations
    7.  Contributors
@@ -91,9 +91,7 @@ Table of Contents
    9.  Appendix
      9.1.  Distinguishing IETF QUIC and Google QUIC Versions
      9.2.  Extracting the CRYPTO frame
-   10. References
-     10.1.  Normative References
-     10.2.  Informative References
+   10. Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -143,14 +141,6 @@ Table of Contents
    refers the state of the QUIC working group drafts as well as to
    changes under discussion, via issues and pull requests in GitHub
    current as of the time of writing.
-
-1.1.  Notational Conventions
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in BCP
-   14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
 
 2.  Features of the QUIC Wire Image
 
@@ -477,10 +467,10 @@ Table of Contents
    header, is integrity protected.  Further, information that was sent
    and exposed in handshake packets sent before the cryptographic
    context was established are validated later during the cryptographic
-   handshake.  Therefore, devices on path MUST NOT change any
-   information or bits in QUIC packet headers, since alteration of
-   header information will lead to a failed integrity check at the
-   receiver, and can even lead to connection termination.
+   handshake.  Therefore, devices on path cannot alter any information
+   or bits in QUIC packet headers, since alteration of header
+   information will lead to a failed integrity check at the receiver,
+   and can even lead to connection termination.
 
 2.6.  Connection ID and Rebinding
 
@@ -952,6 +942,32 @@ Table of Contents
    packets based on packet size are likely to fail, and are emphatically
    NOT RECOMMENDED.
 
+4.7.  QoS support and ECMP
+
+   [EDITOR'S NOTE: this is a bit speculative; keep?]
+
+   QUIC does not provide any additional information on requirements on
+   Quality of Service (QoS) provided from the network.  QUIC assumes
+   that all packets with the same 5-tuple {dest addr, source addr,
+   protocol, dest port, source port} will receive similar network
+   treatment.  That means all stream that are multiplexed over the same
+   QUIC connection require the same network treatment and are handled by
+   the same congestion controller.  If differential network treatment is
+   desired, multiple QUIC connections to the same server might be used,
+   given that establishing a new connection using 0-RTT support is cheap
+   and fast.
+
+   QoS mechanisms in the network could also use the connection ID for
+   service differentiation, as a change of connection ID is bound to a
+   change of address which anyway is likely to lead to a re-route on a
+   different path with different network characteristics.
+
+   Given that QUIC is more tolerant of packet re-ordering than TCP (see
+   Section 2.7), Equal-cost multi-path routing (ECMP) does not
+   necessarily need to be flow based.  However, 5-tuple (plus eventually
+   connection ID if present) matching is still beneficial for QoS given
+   all packets are handled by the same congestion controller.
+
 5.  IANA Considerations
 
    This document has no actions for IANA.
@@ -1068,20 +1084,7 @@ Table of Contents
      crypto_data = payload[counter:counter+crypto_data_length]
      ParseTLS(crypto_data)
 
-10.  References
-
-10.1.  Normative References
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
-
-10.2.  Informative References
+10.  Informative References
 
    [Ding2015] Ding, H. and M. Rabinovich, "TCP Stretch Acknowledgments
               and Timestamps - Findings and Impliciations for Passive
@@ -1118,26 +1121,26 @@ Table of Contents
    [QUIC-HTTP]
               Bishop, M., "Hypertext Transfer Protocol Version 3
               (HTTP/3)", Work in Progress, Internet-Draft, draft-ietf-
-              quic-http-32, 20 October 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-quic-http-32.txt>.
+              quic-http-33, 15 December 2020, <http://www.ietf.org/
+              internet-drafts/draft-ietf-quic-http-33.txt>.
 
    [QUIC-INVARIANTS]
               Thomson, M., "Version-Independent Properties of QUIC",
               Work in Progress, Internet-Draft, draft-ietf-quic-
-              invariants-11, 24 September 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-quic-invariants-11.txt>.
+              invariants-12, 13 December 2020, <http://www.ietf.org/
+              internet-drafts/draft-ietf-quic-invariants-12.txt>.
 
    [QUIC-TLS] Thomson, M. and S. Turner, "Using TLS to Secure QUIC",
-              Work in Progress, Internet-Draft, draft-ietf-quic-tls-32,
-              20 October 2020, <http://www.ietf.org/internet-drafts/
-              draft-ietf-quic-tls-32.txt>.
+              Work in Progress, Internet-Draft, draft-ietf-quic-tls-33,
+              13 December 2020, <http://www.ietf.org/internet-drafts/
+              draft-ietf-quic-tls-33.txt>.
 
    [QUIC-TRANSPORT]
               Iyengar, J. and M. Thomson, "QUIC: A UDP-Based Multiplexed
               and Secure Transport", Work in Progress, Internet-Draft,
-              draft-ietf-quic-transport-32, 20 October 2020,
+              draft-ietf-quic-transport-33, 13 December 2020,
               <http://www.ietf.org/internet-drafts/draft-ietf-quic-
-              transport-32.txt>.
+              transport-33.txt>.
 
    [QUIC_LB]  Duke, M. and N. Banks, "QUIC-LB: Generating Routable QUIC
               Connection IDs", Work in Progress, Internet-Draft, draft-
@@ -1176,9 +1179,9 @@ Table of Contents
 
    [TLS-ESNI] Rescorla, E., Oku, K., Sullivan, N., and C. Wood, "TLS
               Encrypted Client Hello", Work in Progress, Internet-Draft,
-              draft-ietf-tls-esni-08, 16 October 2020,
+              draft-ietf-tls-esni-09, 16 December 2020,
               <http://www.ietf.org/internet-drafts/draft-ietf-tls-esni-
-              08.txt>.
+              09.txt>.
 
    [TMA-QOF]  Trammell, B., Gugelmann, D., and N. Brownlee, "Inline Data
               Integrity Signals for Passive Measurement (in Proc. TMA
