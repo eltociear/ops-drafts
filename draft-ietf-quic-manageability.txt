@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               B. Trammell
-Expires: 24 June 2021                                             Google
-                                                        21 December 2020
+Expires: 25 June 2021                                             Google
+                                                        22 December 2020
 
 
               Manageability of the QUIC Transport Protocol
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 June 2021.
+   This Internet-Draft will expire on 25 June 2021.
 
 Copyright Notice
 
@@ -541,8 +541,11 @@ Table of Contents
    Internet more often than with traditional Internet- and transport-
    layer protocols.  Using a particular version number to recognize
    valid QUIC traffic is likely to persistently miss a fraction of QUIC
-   flows and completely fail in the multi-year timeframe, and is
-   therefore not recommended.
+   flows and completely fail in the near future, and is therefore not
+   recommended.  In addition, due to the speed of evolution of the
+   protocol, devices that attempt to distinguish QUIC traffic from non-
+   QUIC traffic for purposes of network admission control should admit
+   all QUIC traffic regardless of version.
 
 3.  Network-visible information about QUIC flows
 
