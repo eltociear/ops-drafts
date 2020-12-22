@@ -904,15 +904,9 @@ Table of Contents
    renders 5-tuple based filtering insufficient and requires more state
    to be maintained by DDoS defense systems.  For the common case of NAT
    rebinding, DDoS defense systems can detect a change in the client's
-   endpoint address by linking flows based on the first 8 bytes of the
-   server's connection IDs, provided the server is using at least 8-
-   bytes-long connection IDs.  QUIC's linkability resistance ensures
-   that a deliberate connection migration is accompanied by a change in
-   the connection ID and necessitates that connection ID-aware DDoS
-   defense system must have the same information about connection IDs as
-   the load balancer [I-D.ietf-quic-load-balancers].  This may be
-   complicated where mitigation and load balancing environments are
-   logically separate.
+   endpoint address by linking flows based on the server's connection
+   IDs.  QUIC's linkability resistance ensures that a deliberate
+   connection migration is accompanied by a change in the connection ID.
 
    It is questionable whether connection migrations must be supported
    during a DDoS attack.  If the connection migration is not visible to
@@ -1114,13 +1108,6 @@ Table of Contents
               Internet-Draft, draft-ietf-dots-architecture-18, 6 March
               2020, <http://www.ietf.org/internet-drafts/draft-ietf-
               dots-architecture-18.txt>.
-
-   [I-D.ietf-quic-load-balancers]
-              Duke, M. and N. Banks, "QUIC-LB: Generating Routable QUIC
-              Connection IDs", Work in Progress, Internet-Draft, draft-
-              ietf-quic-load-balancers-05, 30 October 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-quic-load-
-              balancers-05.txt>.
 
    [IPIM]     Allman, M., Beverly, R., and B. Trammell, "In-Protocol
               Internet Measurement (arXiv preprint 1612.02902)", 9
