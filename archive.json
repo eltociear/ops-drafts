@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-20T01:02:43.079218+00:00",
+  "timestamp": "2020-12-22T01:04:15.156774+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -2159,7 +2159,7 @@
       "id": "MDU6SXNzdWU2NzAzNTMwMTE=",
       "title": "connection migration: add server preferred address",
       "url": "https://github.com/quicwg/ops-drafts/issues/115",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2170,8 +2170,8 @@
       ],
       "body": "We should probably make it clear what the application can do here (SPA for servers; maybe intentional migration for clients?) I'm not sure if migration is transparent to client applications or not.",
       "createdAt": "2020-07-31T23:54:48Z",
-      "updatedAt": "2020-11-18T06:22:06Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T10:34:59Z",
+      "closedAt": "2020-12-21T10:34:59Z",
       "comments": [
         {
           "author": "mirjak",
@@ -2461,17 +2461,19 @@
       "id": "MDU6SXNzdWU3NDcwNDcxOTk=",
       "title": "2^62-1 is a harder limit than implied",
       "url": "https://github.com/quicwg/ops-drafts/issues/136",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
       "assignees": [
         "britram"
       ],
-      "labels": [],
+      "labels": [
+        "-applicability"
+      ],
       "body": ">  In the presently unlikely event that this limit is reached by an application, the stream can simply be closed and replaced with a new one.\r\n\r\nThis text in [Section 4](https://quicwg.org/ops-drafts/draft-ietf-quic-applicability.html#section-4-2) is incorrect.  When you have sent that much data, the connection flow control limit cannot be increased further.  Consequently, though many additional streams can be opened when a stream hits this limit, you cannot send any bytes on any of those streams.\r\n\r\nI recommend striking this sentence or replacing it with a note about this fundamental limit applying to all data conveyed in streams.",
       "createdAt": "2020-11-20T00:44:54Z",
-      "updatedAt": "2020-12-07T13:37:57Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T10:17:07Z",
+      "closedAt": "2020-12-21T10:17:07Z",
       "comments": [
         {
           "author": "mirjak",
@@ -2491,12 +2493,14 @@
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "mirjak"
+        "britram"
       ],
-      "labels": [],
+      "labels": [
+        "-applicability"
+      ],
       "body": "> However, an endpoint can abruptly close either the ingress or egress direction; these actions are fully independent of each other.\r\n\r\nThis text in [Section 4](https://quicwg.org/ops-drafts/draft-ietf-quic-applicability.html#section-4-3) is incorrect.  An endpoint can abruptly close (reset) egress data, but it can only *request* that its peer abruptly close ingress (using STOP_SENDING).",
       "createdAt": "2020-11-20T00:46:46Z",
-      "updatedAt": "2020-12-07T13:38:29Z",
+      "updatedAt": "2020-12-21T10:46:40Z",
       "closedAt": null,
       "comments": [
         {
@@ -2516,13 +2520,15 @@
       "state": "OPEN",
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "britram"
+      ],
       "labels": [
         "-applicability"
       ],
       "body": "I think that the text on [streams that are critical to an application](https://quicwg.org/ops-drafts/draft-ietf-quic-applicability.html#section-4-4) can be removed.\r\n\r\nThis was an interesting discussion in HTTP/3, but I'm not sure that the applicability statement needs to concern itself with this detail.",
       "createdAt": "2020-11-20T00:48:12Z",
-      "updatedAt": "2020-12-07T13:45:00Z",
+      "updatedAt": "2020-12-21T10:21:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -2586,7 +2592,9 @@
       "state": "OPEN",
       "author": "britram",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "mirjak"
+      ],
       "labels": [
         "-applicability",
         "-manageability",
@@ -2594,7 +2602,7 @@
       ],
       "body": "After removing normative language, it occurs to us that there might be other security considerations that we want to highlight from Transport and TLS in Manageability or (especially) Applicability.",
       "createdAt": "2020-12-07T13:37:08Z",
-      "updatedAt": "2020-12-07T13:37:18Z",
+      "updatedAt": "2020-12-21T10:34:12Z",
       "closedAt": null,
       "comments": []
     },
@@ -2603,7 +2611,7 @@
       "id": "MDU6SXNzdWU3NjA3NzkzNTI=",
       "title": "Integrity Protection is not quite right",
       "url": "https://github.com/quicwg/ops-drafts/issues/142",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2615,8 +2623,8 @@
       ],
       "body": "In manageability:\r\n\r\n\"Integrity Protection of the Wire Image {#wire-integrity}\r\nAs soon as the cryptographic context is established, all information in the QUIC header, including information exposed in the packet header, is integrity protected. Further, information that was sent and exposed in handshake packets sent before the cryptographic context was established are validated later during the cryptographic handshake. Therefore, devices on path cannot alter any information or bits in QUIC packet headers, since alteration of header information will lead to a failed integrity check at the receiver, and can even lead to connection termination.\"\r\n\r\nThis isn't precise. The Initial packet is not meaningfully integrity-protected, but the contents of the CRYPTO frame (and the connection IDs) are. An on-path attacker could, for instance, change the ClientHello's Packet Number to from '0' to '1' and then adjust the ACK frame from '1' to '0'. (Why would one do this?)",
       "createdAt": "2020-12-10T00:31:32Z",
-      "updatedAt": "2020-12-18T09:14:38Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T10:33:15Z",
+      "closedAt": "2020-12-21T10:33:15Z",
       "comments": [
         {
           "author": "mirjak",
@@ -2705,7 +2713,7 @@
       "id": "MDU6SXNzdWU3NjA3ODI5MjI=",
       "title": "Does the length self-encoding scheme actually work?",
       "url": "https://github.com/quicwg/ops-drafts/issues/144",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2717,8 +2725,8 @@
       ],
       "body": "In \"Connection ID and Rebinding\":\r\n\r\n\"Even when encrypted, a scheme could embed the unencrypted length of the Connection ID in the Connection ID itself, instead of remembering it, e.g. by using the first few bits to indicate a certain size of a well-known set of possible sizes with multiple values that indicate the same size but are selected randomly.\"\r\n\r\nI almost went and filed an issue against quic-lb to do this instead of just encoding a plaintext length like it does currently. But is this a good recommended practice? ISTM that long headers would provide a bit of a Rosetta Stone for this mapping, making it not particularly effective for the complexity.\r\n\r\n",
       "createdAt": "2020-12-10T00:40:10Z",
-      "updatedAt": "2020-12-18T09:13:45Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T10:33:26Z",
+      "closedAt": "2020-12-21T10:33:26Z",
       "comments": [
         {
           "author": "mirjak",
@@ -2751,11 +2759,13 @@
       "state": "OPEN",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "britram"
+      ],
       "labels": [],
       "body": "The VN section suggests that observers not use the version number to detect QUIC.\r\n\r\nWould it be futile to ask them to admit QUIC versions they don't recognize rather than drop them?",
       "createdAt": "2020-12-10T00:49:51Z",
-      "updatedAt": "2020-12-17T18:24:38Z",
+      "updatedAt": "2020-12-21T10:27:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -2792,6 +2802,20 @@
           "body": "The best practice is to not block any unknown traffic as blocking hinders evolution. However, I guess there might be security reasons why some will not do that. I guess allowing for certain versions of QUIC is better than blocking UDP entirely...? ",
           "createdAt": "2020-12-17T18:24:38Z",
           "updatedAt": "2020-12-17T18:24:38Z"
+        },
+        {
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "+1... I don't think that putting text in this document saying \"don't wholesale block versions of QUIC you don't understand\" will actually change the behavior of the boxes that will ship this behavior, since drop-unknown is taken as a security best practice. But I still think it's worth putting that advice in the document nonetheless, if only to have \"I told you so\" in an RFC.\r\n\r\n(I do still tend to think that we'll see only two behaviors emerge in the wild: (1) permit anything with a QUIC wire image since there's not much to grab on to there (and rely on the LB implementation to eat DoS hiding behind that wire image) and (2) block anything that smells like QUIC (because it is easy to implement in the default case and it forces fallback to TCP, which already has lots of running security monitoring code).)",
+          "createdAt": "2020-12-21T08:57:22Z",
+          "updatedAt": "2020-12-21T08:57:22Z"
+        },
+        {
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "will work up a PR for us to discuss",
+          "createdAt": "2020-12-21T10:27:20Z",
+          "updatedAt": "2020-12-21T10:27:20Z"
         }
       ]
     },
@@ -2829,11 +2853,15 @@
       "state": "OPEN",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "britram"
+      ],
+      "labels": [
+        "-manageability"
+      ],
       "body": "\"QUIC's linkability resistance ensures that a deliberate connection migration is accompanied by a change in the connection ID and necessitate that connection ID aware DDoS defense system must have the same information about connection IDs as the load balancer {{?I-D.ietf-quic-load-balancers}}. This may be complicated where mitigation and load balancing environments are logically separate.\"\r\n\r\nThis is insufficient. Even the load balancer is only able to identify the end server, not the connection.",
       "createdAt": "2020-12-10T01:31:06Z",
-      "updatedAt": "2020-12-18T09:12:35Z",
+      "updatedAt": "2020-12-21T10:45:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -2949,7 +2977,7 @@
       "id": "MDU6SXNzdWU3NjE4MDI4NDQ=",
       "title": "Connection ID linkability is missing a premise",
       "url": "https://github.com/quicwg/ops-drafts/issues/151",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -2961,8 +2989,8 @@
       ],
       "body": "[Mitigating Timing Linkability with Connection ID Migration](https://quicwg.org/ops-drafts/draft-ietf-quic-applicability.html#name-mitigating-timing-linkabili) launches right into discussion of how linkability protections might be inadequate without really establishing what the requirements are or why they exist.  This needs an introduction paragraph. ",
       "createdAt": "2020-12-11T02:22:43Z",
-      "updatedAt": "2020-12-18T09:16:24Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T10:52:11Z",
+      "closedAt": "2020-12-21T10:52:11Z",
       "comments": [
         {
           "author": "mirjak",
@@ -9035,24 +9063,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTM1NTc4NDI5",
       "title": "Editorial Pass on quic-manageability",
       "url": "https://github.com/quicwg/ops-drafts/pull/150",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This has some updates and clarifications based on protocol evolution, which might be uncontroversial. There are also many typo fixes.\r\n\r\nPTAL",
       "createdAt": "2020-12-10T01:46:43Z",
-      "updatedAt": "2020-12-18T18:15:54Z",
+      "updatedAt": "2020-12-21T10:14:10Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "99a28ed67e4794b4cb14ba746f71bd1b8d3fcfa9",
       "headRepository": "martinduke/ops-drafts",
       "headRefName": "editorial",
       "headRefOid": "44ad37497161e900c0bc1eda5ba7cfb499072aa0",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2020-12-21T10:14:10Z",
+      "mergedAt": "2020-12-21T10:14:10Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "742de9c79fb08a027a0370481ee14b0068fbf0c1"
+      },
       "comments": [
         {
           "author": "martinduke",
@@ -9561,24 +9591,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTM2NDIxMjMx",
       "title": "More applicability edits",
       "url": "https://github.com/quicwg/ops-drafts/pull/153",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Quite a few pieces of text in here that needed corrections.  As before, I'm happy to pull out individual commits so we can discuss.",
       "createdAt": "2020-12-11T02:30:02Z",
-      "updatedAt": "2020-12-18T07:54:09Z",
+      "updatedAt": "2020-12-21T10:14:41Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "99a28ed67e4794b4cb14ba746f71bd1b8d3fcfa9",
       "headRepository": "martinthomson/quic-ops",
       "headRefName": "edits2",
-      "headRefOid": "7ec5936f650f5d4828a050fe595ff9e36581cde7",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "fd504205be1c0b6434291485480f69ac0773b867",
+      "closedAt": "2020-12-21T10:14:41Z",
+      "mergedAt": "2020-12-21T10:14:41Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "e78ca3d0c227fd227b56b188067909727051e5f5"
+      },
       "comments": [],
       "reviews": [
         {
@@ -9597,43 +9629,43 @@
               "originalPosition": 137,
               "body": "```suggestion\r\npaths at once. Probing packets can be used to perform address validation, measure\r\n```",
               "createdAt": "2020-12-17T16:46:53Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 139,
               "body": "Thanks this wording is good now :-)",
               "createdAt": "2020-12-17T16:47:44Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 53,
               "body": "You removed the note about packet length of 1200 bytes. This information was there as this section is kind of describing everything you might want to know about packetization. However, I guess this point is really not important for an application. So I'm fine removing it.",
               "createdAt": "2020-12-17T16:49:39Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 171,
               "body": "Why did you remove this sentence?\r\n\r\n```\r\nIn the case of a grateful shut-down initiated by the application\r\n after application layer negotiation, a NO_ERROR code is expected\r\n```\r\n\r\nNot that the point is super important but wondering is there is an actual reason to remove it...?",
               "createdAt": "2020-12-17T16:53:48Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 223,
               "body": "```suggestion\r\ndatagrams to connections successfully if these values change, and thereby effectively disabling the mitigation support of QUIC.\r\n```",
               "createdAt": "2020-12-17T16:57:21Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 244,
               "body": "```suggestion\r\nconnection. See further {{QUIC-LB}}.\r\n```",
               "createdAt": "2020-12-17T17:00:44Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 255,
               "body": "Actually I'm not sure here. If I remember correctly this text was provided by someone else and it's not entirely clear to me anymore what this stage is supposed to achieve....",
               "createdAt": "2020-12-17T17:05:31Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             }
           ]
         },
@@ -9653,25 +9685,25 @@
               "originalPosition": 53,
               "body": "Yeah, it was not precise enough for me and I don't think that it has much bearing on usage (it's more for implementation and so the core spec can deal with that).",
               "createdAt": "2020-12-18T02:26:27Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 171,
               "body": "The NO_ERROR thing is an HTTP error code, which isn't generic advice.  But more concretely, when you gracefully shutdown, you might agree to stay quite and run down the idle timeout instead.  Or there might be other ways of signaling clean shutdown prior to sending CONNECTION_CLOSE.  I just thought that this was too specific.",
               "createdAt": "2020-12-18T02:29:19Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 223,
               "body": "How about:\r\n\r\n```suggestion\r\ndatagrams to connections successfully if these values change, making migration\r\neffectively impossible.\r\n```",
               "createdAt": "2020-12-18T02:30:06Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             },
             {
               "originalPosition": 255,
               "body": "This was my text originally.  But I got it backwards.  You can't complete an upgrade that adds a new version and end with the assumption that the new version is disabled.  I probably meant \"enabled\".",
               "createdAt": "2020-12-18T02:31:37Z",
-              "updatedAt": "2020-12-18T03:00:36Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             }
           ]
         },
@@ -9691,7 +9723,7 @@
               "originalPosition": 171,
               "body": "Ah, didn't realise that an HTTP errs code. Do we need to say more here?",
               "createdAt": "2020-12-18T07:53:24Z",
-              "updatedAt": "2020-12-18T07:53:24Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             }
           ]
         },
@@ -9711,9 +9743,468 @@
               "originalPosition": 255,
               "body": "Ah okay. However, what's actually meant by validation in this phase?",
               "createdAt": "2020-12-18T07:54:09Z",
-              "updatedAt": "2020-12-18T07:54:09Z"
+              "updatedAt": "2020-12-20T09:59:48Z"
             }
           ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2MDAyMzMx",
+          "commit": {
+            "abbreviatedOid": "a9b19c3"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-20T09:55:53Z",
+          "updatedAt": "2020-12-20T09:55:53Z",
+          "comments": [
+            {
+              "originalPosition": 171,
+              "body": "I don't think so.  This is pretty well treated in the main spec and you have discussion on idle timeouts that seems ample.",
+              "createdAt": "2020-12-20T09:55:53Z",
+              "updatedAt": "2020-12-20T09:59:48Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2MDAyMzg1",
+          "commit": {
+            "abbreviatedOid": "a9b19c3"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-20T09:56:35Z",
+          "updatedAt": "2020-12-20T09:56:36Z",
+          "comments": [
+            {
+              "originalPosition": 255,
+              "body": "Validation being authentication of the values.  Maybe I can use that instead.",
+              "createdAt": "2020-12-20T09:56:35Z",
+              "updatedAt": "2020-12-20T09:59:48Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2MDAyNDE1",
+          "commit": {
+            "abbreviatedOid": "a9b19c3"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-20T09:56:53Z",
+          "updatedAt": "2020-12-20T09:56:54Z",
+          "comments": [
+            {
+              "originalPosition": 255,
+              "body": "```suggestion\r\nThe third stage completes the process by enabling authentication of the negotiated\r\n```",
+              "createdAt": "2020-12-20T09:56:53Z",
+              "updatedAt": "2020-12-20T09:59:48Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 154,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzMzM2MjE3",
+      "title": "encoding limits affect connections too; fix #136",
+      "url": "https://github.com/quicwg/ops-drafts/pull/154",
+      "state": "MERGED",
+      "author": "britram",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-12-21T08:47:32Z",
+      "updatedAt": "2020-12-21T10:17:10Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "99a28ed67e4794b4cb14ba746f71bd1b8d3fcfa9",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "unlikely-event-136",
+      "headRefOid": "37e231741ee082b63c493c70d19e321c2c1ea7c9",
+      "closedAt": "2020-12-21T10:17:06Z",
+      "mergedAt": "2020-12-21T10:17:05Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "c573c8a296bb600d6fcaad49ec37ab0e4e3c9671"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2MjI5NDk4",
+          "commit": {
+            "abbreviatedOid": "76a2f01"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Pretty good.  Thanks.",
+          "createdAt": "2020-12-21T09:09:54Z",
+          "updatedAt": "2020-12-21T09:10:16Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Splitting this paragraph here might make it flow better.",
+              "createdAt": "2020-12-21T09:09:54Z",
+              "updatedAt": "2020-12-21T10:15:44Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2MjQ1NDA1",
+          "commit": {
+            "abbreviatedOid": "76a2f01"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-21T09:35:11Z",
+          "updatedAt": "2020-12-21T09:35:11Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2MjcwOTU1",
+          "commit": {
+            "abbreviatedOid": "37e2317"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-21T10:16:14Z",
+          "updatedAt": "2020-12-21T10:16:15Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "thanks, done",
+              "createdAt": "2020-12-21T10:16:14Z",
+              "updatedAt": "2020-12-21T10:16:15Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 155,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzMzg5MzQy",
+      "title": "remove example conn ID length encoding",
+      "url": "https://github.com/quicwg/ops-drafts/pull/155",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "addresses #144",
+      "createdAt": "2020-12-21T10:23:47Z",
+      "updatedAt": "2020-12-21T10:25:30Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "c573c8a296bb600d6fcaad49ec37ab0e4e3c9671",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-5",
+      "headRefOid": "ecc0e6b0c8b244b501a7fbb072eb9647cf9c0faa",
+      "closedAt": "2020-12-21T10:25:30Z",
+      "mergedAt": "2020-12-21T10:25:29Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "75ceb243db7763eeaa80bcfcf55d4c5f760b461b"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2Mjc2NjA4",
+          "commit": {
+            "abbreviatedOid": "ecc0e6b"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-21T10:25:25Z",
+          "updatedAt": "2020-12-21T10:25:25Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 156,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzMzg5ODQy",
+      "title": "reverse order of \"no critical interface\", fix #138",
+      "url": "https://github.com/quicwg/ops-drafts/pull/156",
+      "state": "OPEN",
+      "author": "britram",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "after discussion with @mirjak, we probably do want to keep the information that \"all streams are equal\" here. \r\nReverse the order of the sentences here to not bury the lede.",
+      "createdAt": "2020-12-21T10:24:45Z",
+      "updatedAt": "2020-12-21T21:36:04Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "c573c8a296bb600d6fcaad49ec37ab0e4e3c9671",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "138-no-critical",
+      "headRefOid": "433adc8f4bb5c63d275470d6d52d2ca602102032",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2MjgwNjM5",
+          "commit": {
+            "abbreviatedOid": "433adc8"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-21T10:31:55Z",
+          "updatedAt": "2020-12-21T10:31:55Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2Njc3MjEx",
+          "commit": {
+            "abbreviatedOid": "433adc8"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "This reads better for sure, aside from an odd bit of phrasing.",
+          "createdAt": "2020-12-21T21:34:14Z",
+          "updatedAt": "2020-12-21T21:36:04Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "\"indicate QUIC to\" is awkward phrasing.",
+              "createdAt": "2020-12-21T21:34:14Z",
+              "updatedAt": "2020-12-21T21:36:04Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 157,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzMzkwNjM3",
+      "title": "additions on integrity protection",
+      "url": "https://github.com/quicwg/ops-drafts/pull/157",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "addresses #142 ",
+      "createdAt": "2020-12-21T10:26:10Z",
+      "updatedAt": "2020-12-21T10:32:31Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "75ceb243db7763eeaa80bcfcf55d4c5f760b461b",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-6",
+      "headRefOid": "fada3d2da3d66d1a7e661a21e37eaaf0462db7a0",
+      "closedAt": "2020-12-21T10:32:31Z",
+      "mergedAt": "2020-12-21T10:32:31Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "e50f8444041307c94063a50da168430c2fa1f004"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 158,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzNDAwODA1",
+      "title": "clarify DDoS, remove LB reference, fix #147",
+      "url": "https://github.com/quicwg/ops-drafts/pull/158",
+      "state": "OPEN",
+      "author": "britram",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-12-21T10:45:45Z",
+      "updatedAt": "2020-12-21T21:48:04Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "e50f8444041307c94063a50da168430c2fa1f004",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "147-ddos-no-lb",
+      "headRefOid": "70676a361a4230a058f29e1851dd93f55501878c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2Mjg5NjIx",
+          "commit": {
+            "abbreviatedOid": "70676a3"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-21T10:47:10Z",
+          "updatedAt": "2020-12-21T10:47:10Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2NTI3MTYy",
+          "commit": {
+            "abbreviatedOid": "70676a3"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "This PR removes the problems I cited in the issue. Ship it.\r\n\r\nI wonder if we should hit the point in the last sentence a little harder. If you want to support connection migration, there's nothing you can do in this space except the Retry Service stuff in QUIC-LB, is there?",
+          "createdAt": "2020-12-21T17:00:51Z",
+          "updatedAt": "2020-12-21T17:00:51Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2Njg1MTk0",
+          "commit": {
+            "abbreviatedOid": "70676a3"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-21T21:48:04Z",
+          "updatedAt": "2020-12-21T21:48:04Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 159,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzNDAxMjU2",
+      "title": "paragraph on CID in mitigating timing linkability section",
+      "url": "https://github.com/quicwg/ops-drafts/pull/159",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #151",
+      "createdAt": "2020-12-21T10:46:36Z",
+      "updatedAt": "2020-12-21T10:52:11Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "e50f8444041307c94063a50da168430c2fa1f004",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-7",
+      "headRefOid": "6b13eb09b2bf4b099eaf9b4bae66c7698860848f",
+      "closedAt": "2020-12-21T10:52:11Z",
+      "mergedAt": "2020-12-21T10:52:11Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "1281ac73bb2d9a42b60b215d85f8bc2205e36780"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 160,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzNDAyMzUy",
+      "title": "fix abrupt ingress close, fix #137",
+      "url": "https://github.com/quicwg/ops-drafts/pull/160",
+      "state": "OPEN",
+      "author": "britram",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-12-21T10:48:37Z",
+      "updatedAt": "2020-12-21T21:48:25Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "e50f8444041307c94063a50da168430c2fa1f004",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "137-no-can-close-ingress",
+      "headRefOid": "a5bda1149d67b22a601176abc8edf7261d832f32",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2Njg1Mzcw",
+          "commit": {
+            "abbreviatedOid": "a5bda11"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-21T21:48:25Z",
+          "updatedAt": "2020-12-21T21:48:25Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 161,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzNDE1Mzc0",
+      "title": "Please don't drop new versions, fix #145.",
+      "url": "https://github.com/quicwg/ops-drafts/pull/161",
+      "state": "OPEN",
+      "author": "britram",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-12-21T11:11:43Z",
+      "updatedAt": "2020-12-21T21:47:42Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "1281ac73bb2d9a42b60b215d85f8bc2205e36780",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "145-no-shiny-drop-plz",
+      "headRefOid": "66016f76cb02821d413b4180e427eef491e1b6cc",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2NTM3NDE1",
+          "commit": {
+            "abbreviatedOid": "66016f7"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-21T17:16:19Z",
+          "updatedAt": "2020-12-21T17:16:19Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2Njg1MDA0",
+          "commit": {
+            "abbreviatedOid": "66016f7"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Wishful thinking, but as you say, can't hurt.",
+          "createdAt": "2020-12-21T21:47:42Z",
+          "updatedAt": "2020-12-21T21:47:42Z",
+          "comments": []
         }
       ]
     }
