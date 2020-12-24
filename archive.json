@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-22T01:04:15.156774+00:00",
+  "timestamp": "2020-12-24T01:10:24.552452+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -2489,7 +2489,7 @@
       "id": "MDU6SXNzdWU3NDcwNDc5NzI=",
       "title": "You can't close stream ingress",
       "url": "https://github.com/quicwg/ops-drafts/issues/137",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -2500,8 +2500,8 @@
       ],
       "body": "> However, an endpoint can abruptly close either the ingress or egress direction; these actions are fully independent of each other.\r\n\r\nThis text in [Section 4](https://quicwg.org/ops-drafts/draft-ietf-quic-applicability.html#section-4-3) is incorrect.  An endpoint can abruptly close (reset) egress data, but it can only *request* that its peer abruptly close ingress (using STOP_SENDING).",
       "createdAt": "2020-11-20T00:46:46Z",
-      "updatedAt": "2020-12-21T10:46:40Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-22T11:30:18Z",
+      "closedAt": "2020-12-22T11:30:18Z",
       "comments": [
         {
           "author": "mirjak",
@@ -2517,7 +2517,7 @@
       "id": "MDU6SXNzdWU3NDcwNDg1NTA=",
       "title": "Critical streams aren't worth a whole paragraph",
       "url": "https://github.com/quicwg/ops-drafts/issues/138",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -2528,8 +2528,8 @@
       ],
       "body": "I think that the text on [streams that are critical to an application](https://quicwg.org/ops-drafts/draft-ietf-quic-applicability.html#section-4-4) can be removed.\r\n\r\nThis was an interesting discussion in HTTP/3, but I'm not sure that the applicability statement needs to concern itself with this detail.",
       "createdAt": "2020-11-20T00:48:12Z",
-      "updatedAt": "2020-12-21T10:21:09Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-22T11:29:37Z",
+      "closedAt": "2020-12-22T11:29:37Z",
       "comments": [
         {
           "author": "mirjak",
@@ -2756,7 +2756,7 @@
       "id": "MDU6SXNzdWU3NjA3ODcxNjc=",
       "title": "Ask people not to drop new versions?",
       "url": "https://github.com/quicwg/ops-drafts/issues/145",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2765,8 +2765,8 @@
       "labels": [],
       "body": "The VN section suggests that observers not use the version number to detect QUIC.\r\n\r\nWould it be futile to ask them to admit QUIC versions they don't recognize rather than drop them?",
       "createdAt": "2020-12-10T00:49:51Z",
-      "updatedAt": "2020-12-21T10:27:20Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-22T11:22:37Z",
+      "closedAt": "2020-12-22T11:22:37Z",
       "comments": [
         {
           "author": "martinthomson",
@@ -2850,7 +2850,7 @@
       "id": "MDU6SXNzdWU3NjA4MDM1Mjk=",
       "title": "DDoS guidance is inaccurate about QUIC-LB",
       "url": "https://github.com/quicwg/ops-drafts/issues/147",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2861,8 +2861,8 @@
       ],
       "body": "\"QUIC's linkability resistance ensures that a deliberate connection migration is accompanied by a change in the connection ID and necessitate that connection ID aware DDoS defense system must have the same information about connection IDs as the load balancer {{?I-D.ietf-quic-load-balancers}}. This may be complicated where mitigation and load balancing environments are logically separate.\"\r\n\r\nThis is insufficient. Even the load balancer is only able to identify the end server, not the connection.",
       "createdAt": "2020-12-10T01:31:06Z",
-      "updatedAt": "2020-12-21T10:45:56Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-22T11:23:22Z",
+      "closedAt": "2020-12-22T11:23:22Z",
       "comments": [
         {
           "author": "martinduke",
@@ -3040,6 +3040,22 @@
           "updatedAt": "2020-12-17T17:27:45Z"
         }
       ]
+    },
+    {
+      "number": 165,
+      "id": "MDU6SXNzdWU3NzMwODY0NzE=",
+      "title": "Transport parameter are not really listed in section 3",
+      "url": "https://github.com/quicwg/ops-drafts/issues/165",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "which is about \"Network-visible information about QUIC flows\". \r\n\r\nThey are mentioned once, based on a recent edit, but the text before that does not introduce them or explain what they are. Maybe we can add a few more sentences also making sure that even though they could be observed in the client initial, they cannot be changed nor observed form the server (to understand final negotiation/support).",
+      "createdAt": "2020-12-22T16:40:11Z",
+      "updatedAt": "2020-12-22T16:40:11Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -9938,24 +9954,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTQzMzg5ODQy",
       "title": "reverse order of \"no critical interface\", fix #138",
       "url": "https://github.com/quicwg/ops-drafts/pull/156",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "britram",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "after discussion with @mirjak, we probably do want to keep the information that \"all streams are equal\" here. \r\nReverse the order of the sentences here to not bury the lede.",
       "createdAt": "2020-12-21T10:24:45Z",
-      "updatedAt": "2020-12-21T21:36:04Z",
+      "updatedAt": "2020-12-22T11:29:37Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "c573c8a296bb600d6fcaad49ec37ab0e4e3c9671",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "138-no-critical",
-      "headRefOid": "433adc8f4bb5c63d275470d6d52d2ca602102032",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "b2579e5a1f2066565c89a2a79105ab5619927019",
+      "closedAt": "2020-12-22T11:29:36Z",
+      "mergedAt": "2020-12-22T11:29:36Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "e949a1ef45e167fb8d4328d6271a37b07787d90d"
+      },
       "comments": [],
       "reviews": [
         {
@@ -9987,7 +10005,47 @@
               "originalPosition": 12,
               "body": "\"indicate QUIC to\" is awkward phrasing.",
               "createdAt": "2020-12-21T21:34:14Z",
-              "updatedAt": "2020-12-21T21:36:04Z"
+              "updatedAt": "2020-12-22T11:28:40Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3MDEwNzc4",
+          "commit": {
+            "abbreviatedOid": "433adc8"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-22T11:27:20Z",
+          "updatedAt": "2020-12-22T11:27:21Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "that's because there's a to too few there...",
+              "createdAt": "2020-12-22T11:27:20Z",
+              "updatedAt": "2020-12-22T11:28:40Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3MDExODUy",
+          "commit": {
+            "abbreviatedOid": "433adc8"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-22T11:29:08Z",
+          "updatedAt": "2020-12-22T11:29:09Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "or on review, the application can reset the connection using an interface QUIC provides it. so, reworded.",
+              "createdAt": "2020-12-22T11:29:09Z",
+              "updatedAt": "2020-12-22T11:29:09Z"
             }
           ]
         }
@@ -10026,25 +10084,42 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTQzNDAwODA1",
       "title": "clarify DDoS, remove LB reference, fix #147",
       "url": "https://github.com/quicwg/ops-drafts/pull/158",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "britram",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2020-12-21T10:45:45Z",
-      "updatedAt": "2020-12-21T21:48:04Z",
+      "updatedAt": "2020-12-22T15:46:33Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "e50f8444041307c94063a50da168430c2fa1f004",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "147-ddos-no-lb",
       "headRefOid": "70676a361a4230a058f29e1851dd93f55501878c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2020-12-22T11:23:20Z",
+      "mergedAt": "2020-12-22T11:23:20Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "aa92118c3ebf70aee9b4421b9df3a488d480eab2"
+      },
+      "comments": [
+        {
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Merged...\r\n\r\n> If you want to support connection migration, there's nothing you can do in this space except the Retry Service stuff in QUIC-LB, is there?\r\n\r\nwith the neurons I have left on 22 December, this seems broadly true. I'm not sure we should be too prescriptive about load balancing in this doc, though -- in part because I suspect the challenge of handling DDoS attacks using QUIC traffic will lead to divergent innovation in the LB space in the near term...",
+          "createdAt": "2020-12-22T11:26:46Z",
+          "updatedAt": "2020-12-22T11:26:46Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "So if the 5-tuple changes because of NAT, the connection ID might actually not change. So in case of DDoS you might want to look at the connection ID to at cover those cases. For DDoS you usually don't need a hard guarantee to track all flows (if you block a flow incorrectly, it has to reconnect), but where you can track the flow when the 5-tuple changes, it might actually help. That is what this paragraph is/was about.",
+          "createdAt": "2020-12-22T15:46:33Z",
+          "updatedAt": "2020-12-22T15:46:33Z"
+        }
+      ],
       "reviews": [
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU2Mjg5NjIx",
@@ -10120,24 +10195,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTQzNDAyMzUy",
       "title": "fix abrupt ingress close, fix #137",
       "url": "https://github.com/quicwg/ops-drafts/pull/160",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "britram",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2020-12-21T10:48:37Z",
-      "updatedAt": "2020-12-21T21:48:25Z",
+      "updatedAt": "2020-12-22T11:30:17Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "e50f8444041307c94063a50da168430c2fa1f004",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "137-no-can-close-ingress",
       "headRefOid": "a5bda1149d67b22a601176abc8edf7261d832f32",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2020-12-22T11:30:17Z",
+      "mergedAt": "2020-12-22T11:30:17Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "5f2fa61e62672925133609eab053f73c057cd4e5"
+      },
       "comments": [],
       "reviews": [
         {
@@ -10160,24 +10237,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTQzNDE1Mzc0",
       "title": "Please don't drop new versions, fix #145.",
       "url": "https://github.com/quicwg/ops-drafts/pull/161",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "britram",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2020-12-21T11:11:43Z",
-      "updatedAt": "2020-12-21T21:47:42Z",
+      "updatedAt": "2020-12-22T11:22:36Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "1281ac73bb2d9a42b60b215d85f8bc2205e36780",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "145-no-shiny-drop-plz",
       "headRefOid": "66016f76cb02821d413b4180e427eef491e1b6cc",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2020-12-22T11:22:36Z",
+      "mergedAt": "2020-12-22T11:22:36Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "6d430b5a28a292360ae125cbd1ac81837e8d567c"
+      },
       "comments": [],
       "reviews": [
         {
@@ -10207,6 +10286,240 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 162,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MTc3Njk1",
+      "title": "Capitalization...",
+      "url": "https://github.com/quicwg/ops-drafts/pull/162",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #152",
+      "createdAt": "2020-12-22T15:01:40Z",
+      "updatedAt": "2020-12-22T21:04:51Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-8",
+      "headRefOid": "d632bcbd35a75a9fe77919e0633755c529fc1efd",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3MzY2MzI0",
+          "commit": {
+            "abbreviatedOid": "d632bcb"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-12-22T21:04:51Z",
+          "updatedAt": "2020-12-22T21:04:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 163,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MTgwODUz",
+      "title": "Capitalization once more...",
+      "url": "https://github.com/quicwg/ops-drafts/pull/163",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #152",
+      "createdAt": "2020-12-22T15:06:42Z",
+      "updatedAt": "2020-12-22T15:06:42Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-9",
+      "headRefOid": "6297750fe1682e8ab0a69e418b736a59318b37e6",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 164,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MjI4MjQ0",
+      "title": "Proposal for rewrite of QoS section",
+      "url": "https://github.com/quicwg/ops-drafts/pull/164",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #140 (hopefully)",
+      "createdAt": "2020-12-22T16:25:04Z",
+      "updatedAt": "2020-12-22T21:16:05Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-10",
+      "headRefOid": "fdf8a19f82eb49a41558070afc30dedbb2e74a83",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3MzY2ODc4",
+          "commit": {
+            "abbreviatedOid": "fdf8a19"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-22T21:06:01Z",
+          "updatedAt": "2020-12-22T21:16:05Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\nnot recommended to use different DiffServ Code Points (DSCPs) {{?RFC2475}} for\r\n```",
+              "createdAt": "2020-12-22T21:06:02Z",
+              "updatedAt": "2020-12-22T21:16:05Z"
+            },
+            {
+              "originalPosition": 11,
+              "body": "Does it?\r\n\r\nWhat you might say instead is:\r\nThe congestion control and loss recovery mechanisms defined in {{QUIC-RECOVERY}}, which are optional by the way, function best if the network provides similar treatment to every packet.  Marking packets with different DSCP is likely to result in variations in order, delivery rate, and drop rate.  Using ECMP to distribute packets from a single flow across multiple network paths could produce similar effects.   These variations could adversely affect performance.\r\n\r\nThe improved feedback in QUIC relative to TCP might mean that QUIC is more able to tolerate variations in packet delivery.  There are also opportunities to deploy loss detection and congestion control algorithms that are more aware of these, but these algorithms do not currently exist.\r\n\r\nGetting differential treatment might be better served by using independent connections, but this has other effects, such as increased overheads and competing congestion control.",
+              "createdAt": "2020-12-22T21:16:01Z",
+              "updatedAt": "2020-12-22T21:16:05Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 166,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MjU0Njky",
+      "title": "Pointers to sec considerations of quic docs and some more text",
+      "url": "https://github.com/quicwg/ops-drafts/pull/166",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #141",
+      "createdAt": "2020-12-22T17:14:08Z",
+      "updatedAt": "2020-12-22T21:04:08Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-11",
+      "headRefOid": "57fbfa009499d2b33c3e6e3bce00301f5bd88f6e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This is a proposal to mention some more things specifically in the security considerations section. At minimum we should add a sentence pointing the reader at the security consideration of the transport and tis drafts. I additionally, more or less, copied some notes from the transport draft that I found particular relevant for reader of the manageability draft. Comments welcome! ",
+          "createdAt": "2020-12-22T17:16:00Z",
+          "updatedAt": "2020-12-22T17:16:00Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3MzY1ODYx",
+          "commit": {
+            "abbreviatedOid": "57fbfa0"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-22T21:03:51Z",
+          "updatedAt": "2020-12-22T21:04:08Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "There are a number of active attacks against a QUIC handshake.  All of them result in connection failures.  This will be no different.  I don't really see the point of isolating this, except to note that the specific methods involved are not yet defined.  Dropping this last sentence would be a start, but I would reconsider the entire paragraph.",
+              "createdAt": "2020-12-22T21:03:51Z",
+              "updatedAt": "2020-12-22T21:04:08Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 167,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MjU3MDYx",
+      "title": "Add one sentence about relevant security considerations in TLS draft",
+      "url": "https://github.com/quicwg/ops-drafts/pull/167",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #141",
+      "createdAt": "2020-12-22T17:18:45Z",
+      "updatedAt": "2020-12-22T17:18:45Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-12",
+      "headRefOid": "2fd19585354191ad4b8630c89e8e560aad0e41d3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 168,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MjYwNDMz",
+      "title": "Do we want to add a reference to the HTTP/3 draft as well",
+      "url": "https://github.com/quicwg/ops-drafts/pull/168",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "to the security considerations section?",
+      "createdAt": "2020-12-22T17:25:35Z",
+      "updatedAt": "2020-12-22T17:32:04Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-13",
+      "headRefOid": "da0968e30cc21215abcd840f802bc546beab22b3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Cross protocol attacks, traffic analysis, and migration are discussed as well in the transport draft, so this pointer might not be absolutely necessary. However, we might still want to have it and then I think these are the relevant sections to refer to.",
+          "createdAt": "2020-12-22T17:32:04Z",
+          "updatedAt": "2020-12-22T17:32:04Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
