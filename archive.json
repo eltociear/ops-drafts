@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-07T01:20:59.318278+00:00",
+  "timestamp": "2021-01-10T01:25:36.535009+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -10698,6 +10698,59 @@
         }
       ],
       "reviews": []
+    },
+    {
+      "number": 169,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTUxMDMxODUw",
+      "title": "remove \"recommended\" for disable spinning",
+      "url": "https://github.com/quicwg/ops-drafts/pull/169",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This sentence is rather supposed to explain what's done in QUIC then giving any recommendation, therefore we can simply remove the \"recommended\" phrasing.",
+      "createdAt": "2021-01-07T12:33:37Z",
+      "updatedAt": "2021-01-08T02:27:39Z",
+      "baseRepository": "quicwg/ops-drafts",
+      "baseRefName": "master",
+      "baseRefOid": "27703dc991c57e1f75a60a497d2fadc6be10a5e2",
+      "headRepository": "quicwg/ops-drafts",
+      "headRefName": "mirjak-patch-14",
+      "headRefOid": "5350e06e1e94ac820297af5da325dca8ecdd4ac5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTYzOTUzODA1",
+          "commit": {
+            "abbreviatedOid": "5350e06"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-01-08T01:57:46Z",
+          "updatedAt": "2021-01-08T01:57:46Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTYzOTYyNjI1",
+          "commit": {
+            "abbreviatedOid": "5350e06"
+          },
+          "author": "marten-seemann",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-01-08T02:27:39Z",
+          "updatedAt": "2021-01-08T02:27:39Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
