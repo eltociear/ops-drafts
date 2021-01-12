@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-10T01:25:36.535009+00:00",
+  "timestamp": "2021-01-12T01:25:14.291229+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -2589,7 +2589,7 @@
       "id": "MDU6SXNzdWU3NTg1MTM5MzI=",
       "title": "Double check security considerations sections",
       "url": "https://github.com/quicwg/ops-drafts/issues/141",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "britram",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2602,8 +2602,8 @@
       ],
       "body": "After removing normative language, it occurs to us that there might be other security considerations that we want to highlight from Transport and TLS in Manageability or (especially) Applicability.",
       "createdAt": "2020-12-07T13:37:08Z",
-      "updatedAt": "2020-12-21T10:34:12Z",
-      "closedAt": null,
+      "updatedAt": "2021-01-11T14:40:59Z",
+      "closedAt": "2021-01-11T14:40:59Z",
       "comments": []
     },
     {
@@ -10369,7 +10369,7 @@
       "labels": [],
       "body": "fixes #140 (hopefully)",
       "createdAt": "2020-12-22T16:25:04Z",
-      "updatedAt": "2021-01-06T17:54:47Z",
+      "updatedAt": "2021-01-11T14:36:54Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
@@ -10471,6 +10471,46 @@
               "body": "I meant to say:  at time of writing of this document (and the quic spec) that was/is the community assumption. \r\n\r\nIs there a reason why you changed flow-based to 5-tuple-based? I believe flow is more correct as there might be ECMP scheme that take the IP flow label into account.",
               "createdAt": "2021-01-06T17:54:47Z",
               "updatedAt": "2021-01-06T17:54:47Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY1NDA2MTMw",
+          "commit": {
+            "abbreviatedOid": "cd3a62c"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-11T14:31:54Z",
+          "updatedAt": "2021-01-11T14:31:55Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "was trying to be more precise (with 5-tuple), but as it turns out, that's wrong (DSCP, Flow Label in v6), so... no. leave it \"flow-based\"",
+              "createdAt": "2021-01-11T14:31:54Z",
+              "updatedAt": "2021-01-11T14:31:55Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY1NDEwODM1",
+          "commit": {
+            "abbreviatedOid": "cd3a62c"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2021-01-11T14:36:50Z",
+          "updatedAt": "2021-01-11T14:36:54Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "after discussion with Mirja... the key point here is that all packets handled by the same congestion controller state should use the same DSCP (because they assume the same path treatment), and this is true of all congestion controllers. This is a useful insight, but it belongs in applicability.\r\n\r\nA corollary of that belongs here: boxes that are Trying To Help by splitting DSCP on flows *really shouldn't do that* on QUIC, not least because they can't get any information from DPI on which packets need which labels.",
+              "createdAt": "2021-01-11T14:36:50Z",
+              "updatedAt": "2021-01-11T14:36:54Z"
             }
           ]
         }
@@ -10596,24 +10636,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MjU3MDYx",
       "title": "Add one sentence about relevant security considerations in TLS draft",
       "url": "https://github.com/quicwg/ops-drafts/pull/167",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "fixes #141",
       "createdAt": "2020-12-22T17:18:45Z",
-      "updatedAt": "2021-01-06T17:58:42Z",
+      "updatedAt": "2021-01-11T14:40:59Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "mirjak-patch-12",
-      "headRefOid": "0f5d261dffffc9230662bd9b255cd0d2f29e808e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "fd5153a16adf895b96715e9f2f33e85870de724b",
+      "closedAt": "2021-01-11T14:40:59Z",
+      "mergedAt": "2021-01-11T14:40:59Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "5dd067761da33912c1df9d3ec6896f2cf408e02c"
+      },
       "comments": [],
       "reviews": [
         {
@@ -10632,7 +10674,7 @@
               "originalPosition": 6,
               "body": "```suggestion\r\napplications using QUIC, as well. Considerations on linkability, replay attacks, \r\nand randomness discussed in {{!QUIC-TLS}} should be taken into account when\r\n```",
               "createdAt": "2021-01-06T08:10:07Z",
-              "updatedAt": "2021-01-06T17:58:42Z"
+              "updatedAt": "2021-01-11T14:39:37Z"
             }
           ]
         },
@@ -10656,24 +10698,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTQ0MjYwNDMz",
       "title": "Do we want to add a reference to the HTTP/3 draft as well",
       "url": "https://github.com/quicwg/ops-drafts/pull/168",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "to the security considerations section?",
       "createdAt": "2020-12-22T17:25:35Z",
-      "updatedAt": "2021-01-06T17:58:14Z",
+      "updatedAt": "2021-01-11T14:53:13Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "mirjak-patch-13",
-      "headRefOid": "da0968e30cc21215abcd840f802bc546beab22b3",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "47a9aba5f4ff4e334cab3e2b74732afa15152d51",
+      "closedAt": "2021-01-11T14:53:08Z",
+      "mergedAt": "2021-01-11T14:53:08Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "da33c65f57705ab41306deabbe1f02d25f10aedd"
+      },
       "comments": [
         {
           "author": "mirjak",
@@ -10697,31 +10741,47 @@
           "updatedAt": "2021-01-06T17:58:13Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY1NDE2OTUy",
+          "commit": {
+            "abbreviatedOid": "da0968e"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-01-11T14:43:10Z",
+          "updatedAt": "2021-01-11T14:43:10Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 169,
       "id": "MDExOlB1bGxSZXF1ZXN0NTUxMDMxODUw",
       "title": "remove \"recommended\" for disable spinning",
       "url": "https://github.com/quicwg/ops-drafts/pull/169",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This sentence is rather supposed to explain what's done in QUIC then giving any recommendation, therefore we can simply remove the \"recommended\" phrasing.",
       "createdAt": "2021-01-07T12:33:37Z",
-      "updatedAt": "2021-01-08T02:27:39Z",
+      "updatedAt": "2021-01-11T14:24:43Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "27703dc991c57e1f75a60a497d2fadc6be10a5e2",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "mirjak-patch-14",
       "headRefOid": "5350e06e1e94ac820297af5da325dca8ecdd4ac5",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-01-11T14:24:40Z",
+      "mergedAt": "2021-01-11T14:24:40Z",
+      "mergedBy": "britram",
+      "mergeCommit": {
+        "oid": "ba8061cdb113f5ed86f9fc5e8359aaaab7c9e7ee"
+      },
       "comments": [],
       "reviews": [
         {
@@ -10748,6 +10808,19 @@
           "body": "",
           "createdAt": "2021-01-08T02:27:39Z",
           "updatedAt": "2021-01-08T02:27:39Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY1Mzk5MjIx",
+          "commit": {
+            "abbreviatedOid": "5350e06"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-01-11T14:24:35Z",
+          "updatedAt": "2021-01-11T14:24:35Z",
           "comments": []
         }
       ]
