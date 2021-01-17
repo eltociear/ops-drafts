@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-14T01:40:57.776469+00:00",
+  "timestamp": "2021-01-17T01:39:50.498726+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -10837,7 +10837,7 @@
       "labels": [],
       "body": "Fix #148",
       "createdAt": "2021-01-12T20:50:10Z",
-      "updatedAt": "2021-01-12T20:50:10Z",
+      "updatedAt": "2021-01-15T16:05:17Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "da33c65f57705ab41306deabbe1f02d25f10aedd",
@@ -10849,7 +10849,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY5MzkxMzQ5",
+          "commit": {
+            "abbreviatedOid": "76f4607"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-01-15T16:05:17Z",
+          "updatedAt": "2021-01-15T16:05:17Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 171,
@@ -10863,7 +10877,7 @@
       "labels": [],
       "body": "Resolves #146 ",
       "createdAt": "2021-01-13T22:38:43Z",
-      "updatedAt": "2021-01-13T22:38:43Z",
+      "updatedAt": "2021-01-15T16:37:25Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "da33c65f57705ab41306deabbe1f02d25f10aedd",
@@ -10875,7 +10889,70 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY5NDAyNTk3",
+          "commit": {
+            "abbreviatedOid": "8ba5170"
+          },
+          "author": "britram",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "LGTM modulo editorial nits / requests",
+          "createdAt": "2021-01-15T16:18:45Z",
+          "updatedAt": "2021-01-15T16:37:25Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "I'd maybe move this up, or summarize it in the first para. This section should be very clear about the \"don't do it\"ness of messing with CIDs.",
+              "createdAt": "2021-01-15T16:18:45Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            },
+            {
+              "originalPosition": 93,
+              "body": "```suggestion\r\nendpoint about the best peer address for the connection (see section 9 of\r\n```",
+              "createdAt": "2021-01-15T16:30:15Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            },
+            {
+              "originalPosition": 93,
+              "body": "\\o/ trailing whitespace",
+              "createdAt": "2021-01-15T16:30:30Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            },
+            {
+              "originalPosition": 67,
+              "body": "```suggestion\r\nusing {{QUIC_LB}} and explicit coordination with the NAT.\r\nHowever, QUIC-LB makes assumptions about endpoint mobility and\r\ncommon configuration in server\r\n```",
+              "createdAt": "2021-01-15T16:30:55Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            },
+            {
+              "originalPosition": 67,
+              "body": "80-char limit",
+              "createdAt": "2021-01-15T16:31:11Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            },
+            {
+              "originalPosition": 45,
+              "body": "editorial, like the comment above: please end this with a snarky conclusion that they are all wrong. :)",
+              "createdAt": "2021-01-15T16:32:29Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            },
+            {
+              "originalPosition": 51,
+              "body": "```suggestion\r\nmight appear to offer a way to multiplex many connections over a single\r\naddress and port.\r\n```",
+              "createdAt": "2021-01-15T16:33:58Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            },
+            {
+              "originalPosition": 61,
+              "body": "also note that applicability recommends fallback for non H3 protocols.",
+              "createdAt": "2021-01-15T16:34:45Z",
+              "updatedAt": "2021-01-15T16:37:25Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
