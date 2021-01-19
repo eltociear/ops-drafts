@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-17T01:39:50.498726+00:00",
+  "timestamp": "2021-01-19T01:39:58.918899+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -10369,18 +10369,26 @@
       "labels": [],
       "body": "fixes #140 (hopefully)",
       "createdAt": "2020-12-22T16:25:04Z",
-      "updatedAt": "2021-01-11T14:36:54Z",
+      "updatedAt": "2021-01-18T17:02:13Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
       "headRepository": "quicwg/ops-drafts",
       "headRefName": "mirjak-patch-10",
-      "headRefOid": "cd3a62cae215ec8776364f84583be08778a7ce90",
+      "headRefOid": "0429d2dba926d1c5681e63f078b425f67730ab19",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "okay, next try. Moved some text to applicability and rewrote stuff in manageability... please review again...",
+          "createdAt": "2021-01-18T17:00:11Z",
+          "updatedAt": "2021-01-18T17:00:11Z"
+        }
+      ],
       "reviews": [
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3MzY2ODc4",
@@ -10398,13 +10406,13 @@
               "originalPosition": 31,
               "body": "```suggestion\r\nnot recommended to use different DiffServ Code Points (DSCPs) {{?RFC2475}} for\r\n```",
               "createdAt": "2020-12-22T21:06:02Z",
-              "updatedAt": "2021-01-06T17:37:20Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             },
             {
               "originalPosition": 11,
               "body": "Does it?\r\n\r\nWhat you might say instead is:\r\nThe congestion control and loss recovery mechanisms defined in {{QUIC-RECOVERY}}, which are optional by the way, function best if the network provides similar treatment to every packet.  Marking packets with different DSCP is likely to result in variations in order, delivery rate, and drop rate.  Using ECMP to distribute packets from a single flow across multiple network paths could produce similar effects.   These variations could adversely affect performance.\r\n\r\nThe improved feedback in QUIC relative to TCP might mean that QUIC is more able to tolerate variations in packet delivery.  There are also opportunities to deploy loss detection and congestion control algorithms that are more aware of these, but these algorithms do not currently exist.\r\n\r\nGetting differential treatment might be better served by using independent connections, but this has other effects, such as increased overheads and competing congestion control.",
               "createdAt": "2020-12-22T21:16:01Z",
-              "updatedAt": "2021-01-06T17:37:20Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             }
           ]
         },
@@ -10424,13 +10432,13 @@
               "originalPosition": 11,
               "body": "+1 to Martin's suggestion here.",
               "createdAt": "2021-01-06T08:02:36Z",
-              "updatedAt": "2021-01-06T17:37:20Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             },
             {
               "originalPosition": 40,
               "body": "...expected by implementations of the protocol?\r\n\r\nI'd reword slightly:\r\n\r\n\"However, the common assumption remains that ECMP is 5-tuple-based, and all packets belonging to the same QUIC connection will get the same treatment.\"",
               "createdAt": "2021-01-06T08:04:22Z",
-              "updatedAt": "2021-01-06T17:37:20Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             }
           ]
         },
@@ -10450,7 +10458,7 @@
               "originalPosition": 11,
               "body": "Happy to adapt the text but the text as proposed by @martinthomson doesn't seem fully correct to me. Two points: first using _some kind of_ congestion control and recovery is not optional and all of these algorithms have to assume that all packets take the same path/get the same treat because otherwise you will need multiple congestion controller instances and that's not some we have in QUICv1. And second, algorithms do exist. TCP RACK is more re-ordering resilience and the time-based threshold in QUIC is as well. My assumption was/is also that they will more likely be implemented/used/deployed in QUIC than in TCP. \r\n\r\nHowever, we should probably see if we agree what we want to recommend. I think the right thing to recommend is that you should only use one DCSP with one QUIC connection and if you think you need more than one DCSP for your traffic, you should use multiple QUIC. Not sure if @martinthomson agrees to the second part?\r\n\r\nI was also trying to specifically focus this section on DCSP and EMCP (and not QoS in general to much - see new section title) because that the kind of questions I heart.",
               "createdAt": "2021-01-06T17:51:54Z",
-              "updatedAt": "2021-01-06T17:51:55Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             }
           ]
         },
@@ -10470,7 +10478,7 @@
               "originalPosition": 40,
               "body": "I meant to say:  at time of writing of this document (and the quic spec) that was/is the community assumption. \r\n\r\nIs there a reason why you changed flow-based to 5-tuple-based? I believe flow is more correct as there might be ECMP scheme that take the IP flow label into account.",
               "createdAt": "2021-01-06T17:54:47Z",
-              "updatedAt": "2021-01-06T17:54:47Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             }
           ]
         },
@@ -10490,7 +10498,7 @@
               "originalPosition": 40,
               "body": "was trying to be more precise (with 5-tuple), but as it turns out, that's wrong (DSCP, Flow Label in v6), so... no. leave it \"flow-based\"",
               "createdAt": "2021-01-11T14:31:54Z",
-              "updatedAt": "2021-01-11T14:31:55Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             }
           ]
         },
@@ -10510,7 +10518,7 @@
               "originalPosition": 11,
               "body": "after discussion with Mirja... the key point here is that all packets handled by the same congestion controller state should use the same DSCP (because they assume the same path treatment), and this is true of all congestion controllers. This is a useful insight, but it belongs in applicability.\r\n\r\nA corollary of that belongs here: boxes that are Trying To Help by splitting DSCP on flows *really shouldn't do that* on QUIC, not least because they can't get any information from DPI on which packets need which labels.",
               "createdAt": "2021-01-11T14:36:50Z",
-              "updatedAt": "2021-01-11T14:36:54Z"
+              "updatedAt": "2021-01-18T17:02:13Z"
             }
           ]
         }
@@ -10528,7 +10536,7 @@
       "labels": [],
       "body": "fixes #141",
       "createdAt": "2020-12-22T17:14:08Z",
-      "updatedAt": "2021-01-06T18:07:26Z",
+      "updatedAt": "2021-01-18T21:48:48Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "5f2fa61e62672925133609eab053f73c057cd4e5",
@@ -10546,6 +10554,13 @@
           "body": "This is a proposal to mention some more things specifically in the security considerations section. At minimum we should add a sentence pointing the reader at the security consideration of the transport and tis drafts. I additionally, more or less, copied some notes from the transport draft that I found particular relevant for reader of the manageability draft. Comments welcome! ",
           "createdAt": "2020-12-22T17:16:00Z",
           "updatedAt": "2020-12-22T17:16:00Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@martinthomson any further thought here?",
+          "createdAt": "2021-01-18T17:03:46Z",
+          "updatedAt": "2021-01-18T17:03:46Z"
         }
       ],
       "reviews": [
@@ -10837,7 +10852,7 @@
       "labels": [],
       "body": "Fix #148",
       "createdAt": "2021-01-12T20:50:10Z",
-      "updatedAt": "2021-01-15T16:05:17Z",
+      "updatedAt": "2021-01-18T14:18:08Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "da33c65f57705ab41306deabbe1f02d25f10aedd",
@@ -10848,7 +10863,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The text is good however I don't understand its placement in the draft fully. Shouldn't this paragraph go into the previous section or even in an own section?\r\n\r\nI know the issue, that this PR is addressing, was about DDoS but if we want to have it in the DDoS section we need probably some more words explaining how Retry should be used in this case. Currently it comes a bit out of nothing and interrupts the reading flow of the rest of the text...",
+          "createdAt": "2021-01-18T14:18:08Z",
+          "updatedAt": "2021-01-18T14:18:08Z"
+        }
+      ],
       "reviews": [
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY5MzkxMzQ5",
@@ -10877,7 +10900,7 @@
       "labels": [],
       "body": "Resolves #146 ",
       "createdAt": "2021-01-13T22:38:43Z",
-      "updatedAt": "2021-01-15T16:37:25Z",
+      "updatedAt": "2021-01-18T16:03:41Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "da33c65f57705ab41306deabbe1f02d25f10aedd",
@@ -10949,6 +10972,182 @@
               "body": "also note that applicability recommends fallback for non H3 protocols.",
               "createdAt": "2021-01-15T16:34:45Z",
               "updatedAt": "2021-01-15T16:37:25Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcwNTM0MDA4",
+          "commit": {
+            "abbreviatedOid": "8ba5170"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "I would like to have this section a bit more crisp. There is probably some intro text that we don't need in this extent. But more importantly, things to do or not to do should be more clearly stated (as Brian also indicated). Maybe some text can also be moved in the load balancer section; plus double check with other text in this doc, e.g. in the sections on CID and Flow Associations.",
+          "createdAt": "2021-01-18T14:23:21Z",
+          "updatedAt": "2021-01-18T16:03:41Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "Note that we already mention NAT in section 3.4. on Flow Association, so maybe we don't really need this intro paragraph...",
+              "createdAt": "2021-01-18T14:23:22Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "We also have a section on \"Connection ID and Rebinding\" (2.6.). Maybe add a reference and double check constancy...?",
+              "createdAt": "2021-01-18T14:24:51Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 15,
+              "body": "Is that actually important? If so I would move this to later in the section and start right a way with the \"using CID for NAT breaks things\" statement below.",
+              "createdAt": "2021-01-18T14:26:39Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 28,
+              "body": "+1 and as per my other comments above I think we can make this whole intro part shorter and more crisp",
+              "createdAt": "2021-01-18T14:27:45Z",
+              "updatedAt": "2021-01-18T16:03:42Z"
+            },
+            {
+              "originalPosition": 33,
+              "body": "```suggestion\r\nwith a wide range of applications. This section extends the discussion to QUIC.\r\n```",
+              "createdAt": "2021-01-18T14:28:13Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 41,
+              "body": "I guess this is a bit redundant and can be merged with the intro text above?",
+              "createdAt": "2021-01-18T14:28:55Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 43,
+              "body": "\r\n```suggestion\r\n```",
+              "createdAt": "2021-01-18T14:30:02Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 45,
+              "body": "```suggestion\r\nThe following subsections discuss potential reasons why CID-aware NATs could seemingly appear attractive but is not.\r\n```",
+              "createdAt": "2021-01-18T14:31:35Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 47,
+              "body": "```suggestion\r\n### Resource Conservation\r\n```",
+              "createdAt": "2021-01-18T14:31:48Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 76,
+              "body": "```suggestion\r\n### \"Helping\" with routing infrastructure issues\r\n```",
+              "createdAt": "2021-01-18T14:32:03Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 35,
+              "body": "```suggestion\r\n\r\n```",
+              "createdAt": "2021-01-18T14:32:28Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 41,
+              "body": "Respectively my edit suggestions remove this section heading and move other subsections below one level up...",
+              "createdAt": "2021-01-18T14:33:19Z",
+              "updatedAt": "2021-01-18T16:03:42Z"
+            },
+            {
+              "originalPosition": 60,
+              "body": "This should more clearly say that middle-connection failure is a huge problem as it takes time to recover. ",
+              "createdAt": "2021-01-18T15:27:01Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 64,
+              "body": "This still sounds like ossifying on CID is a good way to force endpoint to not change it...",
+              "createdAt": "2021-01-18T15:28:13Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 67,
+              "body": "```suggestion\r\nusing the techniques described in {{QUIC_LB}} and explicit coordination with the NAT. However, these techniques makes assumptions about endpoint mobility and common configuration in server\r\n```",
+              "createdAt": "2021-01-18T15:28:54Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 67,
+              "body": "Which assumptions? I would rather straight away say: techniques in {{QUIC_LB}} cannot be used in NAT deployments because they would make restrictions on mobility (how?) and assume a close coordination with the destination server which is not realisable when the NAT is hosted in the client access network.",
+              "createdAt": "2021-01-18T15:33:00Z",
+              "updatedAt": "2021-01-18T16:03:42Z"
+            },
+            {
+              "originalPosition": 71,
+              "body": "This sentence is also a bit to vague for me...",
+              "createdAt": "2021-01-18T15:33:18Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 73,
+              "body": "```suggestion\r\nNote that using connection IDs in this manner anyway violates the best\r\n```",
+              "createdAt": "2021-01-18T15:33:51Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 73,
+              "body": "Wha exactly is \"this manner\"? -> using connection IDs to identify flows ?",
+              "createdAt": "2021-01-18T15:34:44Z",
+              "updatedAt": "2021-01-18T16:03:42Z"
+            },
+            {
+              "originalPosition": 78,
+              "body": "```suggestion\r\nOne challenge in QUIC deployment that want to benefit from QUIC's migration capability is server infrastructures with routers and switches that\r\n```",
+              "createdAt": "2021-01-18T15:37:36Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 81,
+              "body": "```suggestion\r\ndeliver packets to the wrong server. As all QUIC payload is encrypted, routers\r\n```",
+              "createdAt": "2021-01-18T15:38:47Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 82,
+              "body": "```suggestion\r\nand switches will not have access to negotiated but not-yet-in-use CIDs. This is a particular\r\n```",
+              "createdAt": "2021-01-18T15:39:12Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 83,
+              "body": "```suggestion\r\nproblem for low-state load balancers. {{QUIC_LB}} addresses this problem proposing a QUIC extension to\r\n```",
+              "createdAt": "2021-01-18T15:40:12Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 86,
+              "body": "```suggestion\r\nIt seems that a NAT anywhere in the front of such an infrastructure setup could save the effort of converting\r\n```",
+              "createdAt": "2021-01-18T15:41:43Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 97,
+              "body": "I would write this section a bit the other way around to make it stronger. Starting with something like:\r\n\r\nThe use of NATs, that hide address changes of the client, conceals an important input signal for QUIC and the security mechanism implemented in QUIC. When the 4-tuples changes most current server routing infrastructure might not be able to route traffic to the right server and would need to be updated to be connection-ID-aware (see {QUIC_LB}}) in order too support QUIC's migration capability, however, the connection ID in QUIC has been explicitly designed to support this setup and to convey address changes. Using connection-ID-based NAT in front of the server infrastructure instead of properly updating, which appears as a quick work-around, breaks that design.\r\n\r\nAnd now further explain how all good things terrible break...\r\n",
+              "createdAt": "2021-01-18T15:55:16Z",
+              "updatedAt": "2021-01-18T16:03:41Z"
+            },
+            {
+              "originalPosition": 115,
+              "body": "This is important enough, and does apply to all middleboxes not just NAT, that I would make an own section out of it. I actually thought that we say this already somewhere but couldn't find it just yet. So in anyway we don't say this prominent enough!",
+              "createdAt": "2021-01-18T15:58:25Z",
+              "updatedAt": "2021-01-18T16:03:42Z"
+            },
+            {
+              "originalPosition": 83,
+              "body": "Also we have an own section on LB in this draft that we should probably refer to (instead). Maybe we can also just more some of the background infos in this section over there and then have both section right after each other...?!",
+              "createdAt": "2021-01-18T16:00:16Z",
+              "updatedAt": "2021-01-18T16:03:42Z"
             }
           ]
         }
