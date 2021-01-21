@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-19T01:39:58.918899+00:00",
+  "timestamp": "2021-01-21T01:41:38.466275+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -10852,13 +10852,13 @@
       "labels": [],
       "body": "Fix #148",
       "createdAt": "2021-01-12T20:50:10Z",
-      "updatedAt": "2021-01-18T14:18:08Z",
+      "updatedAt": "2021-01-19T17:27:04Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "da33c65f57705ab41306deabbe1f02d25f10aedd",
       "headRepository": "martinduke/ops-drafts",
       "headRefName": "new-ddos-text",
-      "headRefOid": "76f4607fd1030746121df9d515f4810d6de8157b",
+      "headRefOid": "434784260879147ef79c1c74c0740224e72e204b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -10900,18 +10900,26 @@
       "labels": [],
       "body": "Resolves #146 ",
       "createdAt": "2021-01-13T22:38:43Z",
-      "updatedAt": "2021-01-18T16:03:41Z",
+      "updatedAt": "2021-01-20T22:56:02Z",
       "baseRepository": "quicwg/ops-drafts",
       "baseRefName": "master",
       "baseRefOid": "da33c65f57705ab41306deabbe1f02d25f10aedd",
       "headRepository": "martinduke/ops-drafts",
       "headRefName": "quic-natsupp",
-      "headRefOid": "8ba5170c3799f224147ccdba0d71c4c7b514e871",
+      "headRefOid": "17cb1585ea7690d29771d966feb86b08eaa760de",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I addressed all of the comments except where I had no idea for what to write.\r\n\r\nAs for making the section more \"crisp\", I would much prefer that we land this PR and have another one composed by someone else who has a firm idea of what to do about it.",
+          "createdAt": "2021-01-19T19:13:09Z",
+          "updatedAt": "2021-01-19T19:13:09Z"
+        }
+      ],
       "reviews": [
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY5NDAyNTk3",
@@ -10929,49 +10937,49 @@
               "originalPosition": 28,
               "body": "I'd maybe move this up, or summarize it in the first para. This section should be very clear about the \"don't do it\"ness of messing with CIDs.",
               "createdAt": "2021-01-15T16:18:45Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 93,
               "body": "```suggestion\r\nendpoint about the best peer address for the connection (see section 9 of\r\n```",
               "createdAt": "2021-01-15T16:30:15Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 93,
               "body": "\\o/ trailing whitespace",
               "createdAt": "2021-01-15T16:30:30Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 67,
               "body": "```suggestion\r\nusing {{QUIC_LB}} and explicit coordination with the NAT.\r\nHowever, QUIC-LB makes assumptions about endpoint mobility and\r\ncommon configuration in server\r\n```",
               "createdAt": "2021-01-15T16:30:55Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 67,
               "body": "80-char limit",
               "createdAt": "2021-01-15T16:31:11Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 45,
               "body": "editorial, like the comment above: please end this with a snarky conclusion that they are all wrong. :)",
               "createdAt": "2021-01-15T16:32:29Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 51,
               "body": "```suggestion\r\nmight appear to offer a way to multiplex many connections over a single\r\naddress and port.\r\n```",
               "createdAt": "2021-01-15T16:33:58Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 61,
               "body": "also note that applicability recommends fallback for non H3 protocols.",
               "createdAt": "2021-01-15T16:34:45Z",
-              "updatedAt": "2021-01-15T16:37:25Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             }
           ]
         },
@@ -10991,163 +10999,396 @@
               "originalPosition": 12,
               "body": "Note that we already mention NAT in section 3.4. on Flow Association, so maybe we don't really need this intro paragraph...",
               "createdAt": "2021-01-18T14:23:22Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 17,
               "body": "We also have a section on \"Connection ID and Rebinding\" (2.6.). Maybe add a reference and double check constancy...?",
               "createdAt": "2021-01-18T14:24:51Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 15,
               "body": "Is that actually important? If so I would move this to later in the section and start right a way with the \"using CID for NAT breaks things\" statement below.",
               "createdAt": "2021-01-18T14:26:39Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 28,
               "body": "+1 and as per my other comments above I think we can make this whole intro part shorter and more crisp",
               "createdAt": "2021-01-18T14:27:45Z",
-              "updatedAt": "2021-01-18T16:03:42Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 33,
               "body": "```suggestion\r\nwith a wide range of applications. This section extends the discussion to QUIC.\r\n```",
               "createdAt": "2021-01-18T14:28:13Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 41,
               "body": "I guess this is a bit redundant and can be merged with the intro text above?",
               "createdAt": "2021-01-18T14:28:55Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 43,
               "body": "\r\n```suggestion\r\n```",
               "createdAt": "2021-01-18T14:30:02Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 45,
               "body": "```suggestion\r\nThe following subsections discuss potential reasons why CID-aware NATs could seemingly appear attractive but is not.\r\n```",
               "createdAt": "2021-01-18T14:31:35Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 47,
               "body": "```suggestion\r\n### Resource Conservation\r\n```",
               "createdAt": "2021-01-18T14:31:48Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 76,
               "body": "```suggestion\r\n### \"Helping\" with routing infrastructure issues\r\n```",
               "createdAt": "2021-01-18T14:32:03Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 35,
               "body": "```suggestion\r\n\r\n```",
               "createdAt": "2021-01-18T14:32:28Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 41,
               "body": "Respectively my edit suggestions remove this section heading and move other subsections below one level up...",
               "createdAt": "2021-01-18T14:33:19Z",
-              "updatedAt": "2021-01-18T16:03:42Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 60,
               "body": "This should more clearly say that middle-connection failure is a huge problem as it takes time to recover. ",
               "createdAt": "2021-01-18T15:27:01Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 64,
               "body": "This still sounds like ossifying on CID is a good way to force endpoint to not change it...",
               "createdAt": "2021-01-18T15:28:13Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 67,
               "body": "```suggestion\r\nusing the techniques described in {{QUIC_LB}} and explicit coordination with the NAT. However, these techniques makes assumptions about endpoint mobility and common configuration in server\r\n```",
               "createdAt": "2021-01-18T15:28:54Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 67,
               "body": "Which assumptions? I would rather straight away say: techniques in {{QUIC_LB}} cannot be used in NAT deployments because they would make restrictions on mobility (how?) and assume a close coordination with the destination server which is not realisable when the NAT is hosted in the client access network.",
               "createdAt": "2021-01-18T15:33:00Z",
-              "updatedAt": "2021-01-18T16:03:42Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 71,
               "body": "This sentence is also a bit to vague for me...",
               "createdAt": "2021-01-18T15:33:18Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 73,
               "body": "```suggestion\r\nNote that using connection IDs in this manner anyway violates the best\r\n```",
               "createdAt": "2021-01-18T15:33:51Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 73,
               "body": "Wha exactly is \"this manner\"? -> using connection IDs to identify flows ?",
               "createdAt": "2021-01-18T15:34:44Z",
-              "updatedAt": "2021-01-18T16:03:42Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 78,
               "body": "```suggestion\r\nOne challenge in QUIC deployment that want to benefit from QUIC's migration capability is server infrastructures with routers and switches that\r\n```",
               "createdAt": "2021-01-18T15:37:36Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 81,
               "body": "```suggestion\r\ndeliver packets to the wrong server. As all QUIC payload is encrypted, routers\r\n```",
               "createdAt": "2021-01-18T15:38:47Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 82,
               "body": "```suggestion\r\nand switches will not have access to negotiated but not-yet-in-use CIDs. This is a particular\r\n```",
               "createdAt": "2021-01-18T15:39:12Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 83,
               "body": "```suggestion\r\nproblem for low-state load balancers. {{QUIC_LB}} addresses this problem proposing a QUIC extension to\r\n```",
               "createdAt": "2021-01-18T15:40:12Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 86,
               "body": "```suggestion\r\nIt seems that a NAT anywhere in the front of such an infrastructure setup could save the effort of converting\r\n```",
               "createdAt": "2021-01-18T15:41:43Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 97,
               "body": "I would write this section a bit the other way around to make it stronger. Starting with something like:\r\n\r\nThe use of NATs, that hide address changes of the client, conceals an important input signal for QUIC and the security mechanism implemented in QUIC. When the 4-tuples changes most current server routing infrastructure might not be able to route traffic to the right server and would need to be updated to be connection-ID-aware (see {QUIC_LB}}) in order too support QUIC's migration capability, however, the connection ID in QUIC has been explicitly designed to support this setup and to convey address changes. Using connection-ID-based NAT in front of the server infrastructure instead of properly updating, which appears as a quick work-around, breaks that design.\r\n\r\nAnd now further explain how all good things terrible break...\r\n",
               "createdAt": "2021-01-18T15:55:16Z",
-              "updatedAt": "2021-01-18T16:03:41Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 115,
               "body": "This is important enough, and does apply to all middleboxes not just NAT, that I would make an own section out of it. I actually thought that we say this already somewhere but couldn't find it just yet. So in anyway we don't say this prominent enough!",
               "createdAt": "2021-01-18T15:58:25Z",
-              "updatedAt": "2021-01-18T16:03:42Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
             },
             {
               "originalPosition": 83,
               "body": "Also we have an own section on LB in this draft that we should probably refer to (instead). Maybe we can also just more some of the background infos in this section over there and then have both section right after each other...?!",
               "createdAt": "2021-01-18T16:00:16Z",
-              "updatedAt": "2021-01-18T16:03:42Z"
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcxNTUzNjc2",
+          "commit": {
+            "abbreviatedOid": "4a79194"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-19T18:57:05Z",
+          "updatedAt": "2021-01-19T18:57:06Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "Made obsolete by Mirja's suggestion",
+              "createdAt": "2021-01-19T18:57:06Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcxNTU1MDkz",
+          "commit": {
+            "abbreviatedOid": "4a79194"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-19T18:58:55Z",
+          "updatedAt": "2021-01-19T18:58:56Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "This text is gone",
+              "createdAt": "2021-01-19T18:58:55Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcxNTU4Mjc1",
+          "commit": {
+            "abbreviatedOid": "4a79194"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-19T19:02:58Z",
+          "updatedAt": "2021-01-19T19:02:59Z",
+          "comments": [
+            {
+              "originalPosition": 64,
+              "body": "Do you have a recommendation?",
+              "createdAt": "2021-01-19T19:02:58Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcxNTU4NDg4",
+          "commit": {
+            "abbreviatedOid": "4a79194"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-19T19:03:17Z",
+          "updatedAt": "2021-01-19T19:03:17Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "Do you have a suggestion?",
+              "createdAt": "2021-01-19T19:03:17Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcxNTU5MjMy",
+          "commit": {
+            "abbreviatedOid": "4a79194"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-19T19:04:14Z",
+          "updatedAt": "2021-01-19T19:04:15Z",
+          "comments": [
+            {
+              "originalPosition": 73,
+              "body": "Port ",
+              "createdAt": "2021-01-19T19:04:15Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcxNTYyOTkw",
+          "commit": {
+            "abbreviatedOid": "4a79194"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-19T19:09:22Z",
+          "updatedAt": "2021-01-19T19:09:22Z",
+          "comments": [
+            {
+              "originalPosition": 97,
+              "body": "I added another paragraph up front.",
+              "createdAt": "2021-01-19T19:09:22Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcxNTYzNjkw",
+          "commit": {
+            "abbreviatedOid": "aab0de8"
+          },
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-19T19:10:19Z",
+          "updatedAt": "2021-01-19T19:10:19Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "overcome by events",
+              "createdAt": "2021-01-19T19:10:19Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcyMTQ5Mzc3",
+          "commit": {
+            "abbreviatedOid": "aab0de8"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-20T11:58:44Z",
+          "updatedAt": "2021-01-20T11:58:45Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "```suggestion\r\nthat use QUIC, this is preferable to a connection suddenly black holing and\r\n```",
+              "createdAt": "2021-01-20T11:58:44Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcyMTQ5NDQy",
+          "commit": {
+            "abbreviatedOid": "aab0de8"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-20T11:58:48Z",
+          "updatedAt": "2021-01-20T11:58:49Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "I believe this belonged to the \"assumptions about endpoint mobility and common configuration in server\r\n infrastructure\" part. Not fully clear what assumptions you are talking about,",
+              "createdAt": "2021-01-20T11:58:49Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcyMTUzMTUz",
+          "commit": {
+            "abbreviatedOid": "2740235"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-20T12:03:56Z",
+          "updatedAt": "2021-01-20T12:03:56Z",
+          "comments": [
+            {
+              "originalPosition": 64,
+              "body": "Maybe s/\"make it risky to change Connection IDs\"/\"hinders the use of QUIC's migration function which relies on the ability to change the connection ID any time during the life time of a QUIC connection\"...",
+              "createdAt": "2021-01-20T12:03:56Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcyMTUzODA5",
+          "commit": {
+            "abbreviatedOid": "2740235"
+          },
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Happy to merge for now and make further changes if needed later.",
+          "createdAt": "2021-01-20T12:04:48Z",
+          "updatedAt": "2021-01-20T12:04:48Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTcyNzE3ODcz",
+          "commit": {
+            "abbreviatedOid": "7230851"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-01-20T22:53:31Z",
+          "updatedAt": "2021-01-20T22:53:32Z",
+          "comments": [
+            {
+              "originalPosition": 51,
+              "body": "```suggestion\r\nSome applications might prefer to risk mid-connection failure rather than\r\nnot being able to use QUIC. HTTP/3 prefers reliability, recommending that\r\nTCP be used as a fallback and {{?I-D.ietf-quic-applicability}} recommends\r\nTCP fallback for other protocols on the basis that this is preferable to\r\nsudden connection errors and time outs.\r\n```\r\n\r\nI had trouble with the phrasing here and I didn't like the comma-splice much.",
+              "createdAt": "2021-01-20T22:53:32Z",
+              "updatedAt": "2021-01-20T22:56:02Z"
             }
           ]
         }
