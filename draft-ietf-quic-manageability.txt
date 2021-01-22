@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               B. Trammell
-Expires: 15 July 2021                                             Google
-                                                         11 January 2021
+Expires: 26 July 2021                                             Google
+                                                         22 January 2021
 
 
               Manageability of the QUIC Transport Protocol
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 July 2021.
+   This Internet-Draft will expire on 26 July 2021.
 
 Copyright Notice
 
@@ -917,6 +917,15 @@ Table of Contents
    clients migrate to a new path, they should be prepared for the
    migration to fail and attempt to reconnect quickly.
 
+   TCP syncookies [RFC4937] are a well-established method of mitigating
+   some kinds of TCP DDoS attacks.  QUIC Retry packets are the
+   functional analogue to syncookies, forcing clients to prove
+   possession of their IP address before committing server state.
+   However, there are safeguards in QUIC against unsolicited injection
+   of these packets by intermediaries who do not have consent of the end
+   server.  See [QUIC_LB] for standard ways for intermediaries to send
+   Retry packets on behalf of consenting servers.
+
 4.5.  UDP Policing
 
    Today, UDP is the most prevalent DDoS vector, since it is easy for
@@ -1129,20 +1138,20 @@ Table of Contents
    [QUIC-INVARIANTS]
               Thomson, M., "Version-Independent Properties of QUIC",
               Work in Progress, Internet-Draft, draft-ietf-quic-
-              invariants-12, 13 December 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-quic-invariants-12.txt>.
+              invariants-13, 14 January 2021, <http://www.ietf.org/
+              internet-drafts/draft-ietf-quic-invariants-13.txt>.
 
    [QUIC-TLS] Thomson, M. and S. Turner, "Using TLS to Secure QUIC",
-              Work in Progress, Internet-Draft, draft-ietf-quic-tls-33,
-              13 December 2020, <http://www.ietf.org/internet-drafts/
-              draft-ietf-quic-tls-33.txt>.
+              Work in Progress, Internet-Draft, draft-ietf-quic-tls-34,
+              14 January 2021, <http://www.ietf.org/internet-drafts/
+              draft-ietf-quic-tls-34.txt>.
 
    [QUIC-TRANSPORT]
               Iyengar, J. and M. Thomson, "QUIC: A UDP-Based Multiplexed
               and Secure Transport", Work in Progress, Internet-Draft,
-              draft-ietf-quic-transport-33, 13 December 2020,
+              draft-ietf-quic-transport-34, 14 January 2021,
               <http://www.ietf.org/internet-drafts/draft-ietf-quic-
-              transport-33.txt>.
+              transport-34.txt>.
 
    [QUIC_LB]  Duke, M. and N. Banks, "QUIC-LB: Generating Routable QUIC
               Connection IDs", Work in Progress, Internet-Draft, draft-
@@ -1154,6 +1163,10 @@ Table of Contents
               Translation (NAT) Behavioral Requirements for Unicast
               UDP", BCP 127, RFC 4787, DOI 10.17487/RFC4787, January
               2007, <https://www.rfc-editor.org/info/rfc4787>.
+
+   [RFC4937]  Arberg, P. and V. Mammoliti, "IANA Considerations for PPP
+              over Ethernet (PPPoE)", RFC 4937, DOI 10.17487/RFC4937,
+              June 2007, <https://www.rfc-editor.org/info/rfc4937>.
 
    [RFC5382]  Guha, S., Ed., Biswas, K., Ford, B., Sivakumar, S., and P.
               Srisuresh, "NAT Behavioral Requirements for TCP", BCP 142,
