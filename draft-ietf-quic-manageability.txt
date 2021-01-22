@@ -1139,16 +1139,23 @@ Table of Contents
 
 7.  Contributors
 
-   Dan Druta contributed text to Section 4.4.  Igor Lubashev contributed
-   text to Section 4.3 on the use of the connection ID for load
-   balancing.  Marcus Ilhar contributed text to Section 3.7 on the use
-   of the spin bit.  The pseudo provided in the appendix is based on
-   input provided by David Schinazi.
+   The following people have contributed text to sections of this
+   document:
+
+   *  Dan Druta
+
+   *  Martin Duke
+
+   *  Marcus Ilhar
+
+   *  Igor Lubashev
+
+   *  David Schinazi
 
 8.  Acknowledgments
 
-   Thanks to Martin Thomson and Martin Duke for contributing by
-   reviewing and providing text proposals.
+   Special thanks to Martin Thomson and Martin Duke for the detailed
+   reviews and feedback.
 
    This work is partially supported by the European Commission under
    Horizon 2020 grant agreement no. 688421 Measurement and Architecture
