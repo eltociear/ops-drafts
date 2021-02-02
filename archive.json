@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-24T01:42:09.257562+00:00",
+  "timestamp": "2021-02-02T00:59:47.161942+00:00",
   "repo": "quicwg/ops-drafts",
   "labels": [
     {
@@ -3058,6 +3058,89 @@
       "updatedAt": "2021-01-22T12:37:32Z",
       "closedAt": "2021-01-22T12:37:32Z",
       "comments": []
+    },
+    {
+      "number": 174,
+      "id": "MDU6SXNzdWU3OTg0MjYzNTg=",
+      "title": "Does TCP fallback require TLS 1.3?",
+      "url": "https://github.com/quicwg/ops-drafts/issues/174",
+      "state": "OPEN",
+      "author": "LPardue",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Applicability section 2 says:\r\n\r\n```\r\nAll applications running on top of QUIC must therefore either be prepared to accept connectivity failure on such networks, or be engineered to fall back to some other transport protocol. In the case of HTTP, this fallback is TLS 1.3 over TCP.\r\n```\r\n\r\nI'm not sure how practical this advice is. Requiring a fallback to TLS 1.3 specifically seems problematic due to the diversity of HTTP versions and TLS versions that are deployed today. (NB: I agree with a general raising of the bar for security, but I don't think this document is the place to state it)\r\n\r\nWe can assume that any HTTP version might learn about HTTP/3 via Alt-Svc or HTTPSVC. This could for example be HTTP/1.1 over TCP port 80. Such a client could fallback to the version it learned about QUIC from, and nothing bad would happen.\r\n\r\n",
+      "createdAt": "2021-02-01T14:54:12Z",
+      "updatedAt": "2021-02-01T21:14:13Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This wasn't meant to enforce any restriction. The assumption was simply that if you have implemented QUIC, you might have probably also implemented TLS1.3... however, I guess we can just remove the \"1.3\" here and only say \"TLS over TCP\". Okay?",
+          "createdAt": "2021-02-01T15:51:17Z",
+          "updatedAt": "2021-02-01T15:51:17Z"
+        },
+        {
+          "author": "ianswett",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "One could argue it should require TLS 1.3, since otherwise there's an easy security downgrade, but I'm not sure that's something we could require.",
+          "createdAt": "2021-02-01T16:21:24Z",
+          "updatedAt": "2021-02-01T16:21:24Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "MEMBER",
+          "body": "IMO we need to accommodate disparate support across versions. To give an example, a CDN operator may have QUIC and HTTP endpoints that are configured differently according to customer configuration. With QUIC v1 it is safe to assume only TLS 1.3 so a CDN might not provide configuration for TLS version. However, other HTTP versions could theoretically be configured only to support a maximum of TLS 1.2. Since plaintext HTTP and TLS 1.2 are not prohibited for use on the internet, it seems odd to levy a requirement that prevents them being used in one specific chain of interactions. \r\n\r\nMirja's suggestion to say \"TLS over TCP\" is better but would still not address the plaintext HTTP case. A user agent might see http://example.com, connect to port 80, and get Alt-Svc'd to HTTP/3. If the something goes wrong and TLS is not permitted, then all connectivity might be broken forever.\r\n",
+          "createdAt": "2021-02-01T16:40:45Z",
+          "updatedAt": "2021-02-01T16:40:45Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "In the same section later we say \r\n\r\n```\r\nAny fallback mechanism is likely to impose a degradation of performance; however, fallback must not silently violate the application's expectation of confidentiality or integrity of its payload data.\r\n```\r\n\r\nI hope that addresses your point about security downgrade, @ianswett ?",
+          "createdAt": "2021-02-01T17:17:16Z",
+          "updatedAt": "2021-02-01T17:17:16Z"
+        },
+        {
+          "author": "ianswett",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "It might be worth saying \"likely to impose a degradation on performance and can degrade security;\"?",
+          "createdAt": "2021-02-01T21:14:13Z",
+          "updatedAt": "2021-02-01T21:14:13Z"
+        }
+      ]
+    },
+    {
+      "number": 175,
+      "id": "MDU6SXNzdWU3OTg1NzE0NDU=",
+      "title": "Discuss application-layer graceful/scheduled close",
+      "url": "https://github.com/quicwg/ops-drafts/issues/175",
+      "state": "OPEN",
+      "author": "LPardue",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://quicwg.org/ops-drafts/draft-ietf-quic-applicability.html#section-8 deals with connection closure and is pretty exhaustive. However, I think it would be improved by discussing how an application protocol might manage graceful connection close in the absence of a transport-layer mechanism. HTTP/3 defines the GOAWAY frame for this purpose, defining the closure signalling mechnanism and the  behaviour of endpoints when in the draining period - especially wrt creating streams.",
+      "createdAt": "2021-02-01T17:44:16Z",
+      "updatedAt": "2021-02-01T17:54:13Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@LPardue would you be able to propose some text?",
+          "createdAt": "2021-02-01T17:50:12Z",
+          "updatedAt": "2021-02-01T17:50:12Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "MEMBER",
+          "body": "I'll try \ud83d\ude00",
+          "createdAt": "2021-02-01T17:54:12Z",
+          "updatedAt": "2021-02-01T17:54:12Z"
+        }
+      ]
     }
   ],
   "pulls": [
