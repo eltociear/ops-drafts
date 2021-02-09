@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               B. Trammell
-Expires: 12 August 2021                                           Google
-                                                         8 February 2021
+Expires: 13 August 2021                                           Google
+                                                         9 February 2021
 
 
               Applicability of the QUIC Transport Protocol
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 August 2021.
+   This Internet-Draft will expire on 13 August 2021.
 
 Copyright Notice
 
@@ -491,7 +491,7 @@ Table of Contents
    applications with a fallback to TCP that do not already have an
    alternate mapping to UDP, usually the registration (if necessary) and
    use of the UDP port number corresponding to the TCP port already
-   registered for the application is approrpiate.  For example, the
+   registered for the application is appropriate.  For example, the
    default port for HTTP/3 [QUIC-HTTP] is UDP port 443, analogous to
    HTTP/1.1 or HTTP/2 over TLS over TCP.
 
